@@ -1,0 +1,245 @@
+<style>
+.type,.moves {
+	margin: 0.1em;
+}
+.type {
+	height: 1em;
+	vertical-align: top;
+}
+.moves {
+	width: 1.1em;
+	vertical-align: bottom;
+}
+</style>
+<script src="moves.json"></script><script src="pokemon.json"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+a:link,a:hover,a:visited,a:active{color: #0078a8}
+#output {
+	background: url("./img/Mark.jpg");
+	margin: 0;
+	padding: 0;
+	display: block;
+	width: 396px;
+	height: 395px;
+	border: solid 1px #000;
+}
+#box {
+	vertical-align: middle;
+	display: block;
+	margin: 3.5em 0 0 0;
+	padding: 0;
+	text-align: left;
+	width: 280px;
+}
+table {
+	font-family: "Helvetica Neue",Helvetica;
+	font-size: 12px;
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: auto;
+	line-height: 1.5em;
+}
+table td {
+	padding: 0;
+	margin: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+#top-left { background: url("./img/b-top-left.png"); width: 22px; height: 22px;}
+#top { background: url("./img/b-top.png");}
+#top-right { background: url("./img/b-top-right.png"); width: 22px;}
+#left { background: url("./img/b-left.png");}
+#data {	background: #FFF;}
+#right { background: url("./img/b-right.png");}
+#bottom-left { background: url("./img/b-bottom-left.png");width: 22px; height: 22px;}
+#bottom { background: url("./img/b-bottom.png");}
+#bottom-right { background: url("./img/b-bottom-right.png");}
+
+#arrow {
+	display: block;
+	margin: auto;
+	position: relative;
+	top: -6px;
+}
+button { margin: 1em; cursor: pointer; }
+input { padding: 0.2em; margin: 0.5em 0; }
+#cp { width: 3em; }
+#atk, #def, #sta { width: 2em; }
+#icon { display: block; margin: auto; position: relative; top: -10px; }
+</style>
+<script>
+var item, poatk, podef, posta, pocp, poid, pom1, pom2; poid="1";
+function spawn(el){
+	if(el=="bulbasaur"){
+		poid=1; pom1=214; pom2=90; poatk=14; podef=15; posta=14; pocp=666; iconimg.src=poid+".png";
+		relaunch();
+	}
+	if(el=="charmander"){
+		poid=4; pom1=220; pom2=24; poatk=11; podef=13; posta=12; pocp=831; iconimg.src=poid+".png";
+		relaunch();
+	}
+	if(el=="squirtle"){
+		poid=7; pom1=237; pom2=58; poatk=5; podef=15; posta=3; pocp=708; iconimg.src=poid+".png";
+		relaunch();
+	}
+	if(el=="eevee"){
+		poid=133; pom1=221; pom2=26; poatk=15; podef=15; posta=15; pocp=969; iconimg.src=poid+".png";
+		relaunch();
+	}
+	if(el=="jolteon"){
+		poid=135; pom1=205; pom2=79; poatk=15; podef=10; posta=15; pocp=2730; iconimg.src=poid+".png";
+		relaunch();
+	}
+	if(el=="regspm"){
+		poid=1; pom1=214; pom2=90; poatk="-14"; podef=15; posta=14; pocp=666; iconimg.src=poid+".png";
+		relaunch();
+	}
+}
+var expireplus = new Date().getTime() / 1000; expireplus=expireplus+1000;
+item = {
+	"expires_at": expireplus, 
+	"cp": 666, 
+	"move1": pokeMoves[214].name, 
+	"move2": pokeMoves[90].name, 
+	"move_1": 214, 
+	"move_2": 90, 
+	"pokemon_id": 1, 
+	"name": pokeMon[1].name,
+	"lon": -122.30270698079364, 
+	"lat": 47.651952882301536, 
+	"pokemon_level": 21,
+	"atk": 14,
+	"def": 15,
+	"sta": 14
+	};
+	
+</script>
+
+<center>
+<button onClick="spawn('bulbasaur')">Bulbasaur</button>
+<button onClick="spawn('charmander')">Charmander</button>
+<button onClick="spawn('squirtle')">Squirtle</button>
+<button onClick="spawn('eevee')">Eevee</button>
+<button onClick="spawn('jolteon')">Jolteon</button>
+<br />
+<button onClick="spawn('regspm')"><b>REGULAR SPM</b></button>
+<div id="output">
+<div id="box">
+<table>
+<tr><td id="top-left"></td><td id="top"></td><td id="top-right"></td></tr>
+<tr><td id="left"></td><td id="data">
+<script>
+function relaunch() {
+	item = {
+		"expires_at": expireplus, 
+		"cp": pocp, 
+		"move1": pokeMoves[pom1].name, 
+		"move2": pokeMoves[pom2].name, 
+		"move_1": pom1, 
+		"move_2": pom2, 
+		"pokemon_id": poid, 
+		"name": pokeMon[poid].name,
+		"lon": -122.30270698079364, 
+		"lat": 47.651952882301536, 
+		"pokemon_level": 21,
+		"atk": poatk,
+		"def": podef,
+		"sta": posta
+	};
+	getPopupContent(item);
+}
+getPopupContent(item);
+// INCLUDE:
+//
+// THE TWO JSON FILES AT THE TOP, AND THE SMALL STYLE (CSS) AT THE TOP
+//
+// MAKE SURE THAT WEBHOOK OR DATA ALSO INCLUDES THE MOVE'S ID, FI: "MOVE_1", AND "MOVE_2", AND IS ALSO COLLECTING THE "POKEMON_LEVEL"
+//
+
+//
+// NEW SCRIPT TO USE IN "main.js":
+//
+function getPopupContent(item) {
+    var diff = (item.expires_at - new Date().getTime() / 1000);
+    var minutes = parseInt(diff / 60);
+    var seconds = parseInt(diff - (minutes * 60));
+    var expires_at = minutes + 'm ' + seconds + 's';
+	
+	var pdurl = '(<a href="https://pokemongo.gamepress.gg/pokemon/' + item.pokemon_id + '">#' + item.pokemon_id + '</a>) <br />';
+	var patreonlink = '<a target="_blank"  href="https://www.patreon.com/SPMplus">';
+	var m1img = '<img src="./img/bg/' + pokeMoves[item.move_1].type + '.png" class="moves" />';
+	var m2img = '<img src="./img/bg/' + pokeMoves[item.move_2].type + '.png" class="moves" />';
+	var timeleft = '<b>Disappears in:</b> ' + expires_at + '<br />';
+	
+	var pimg1 = '<img src="./img/'+pokeMon[item.pokemon_id].types[0].type+'.png" class="type" />';
+	var pimg2 = '';
+	if(pokeMon[item.pokemon_id].types[1]){pimg2 = '<img src="./img/'+pokeMon[item.pokemon_id].types[1].type+'.png" class="type" />'}
+	
+    var content = '<b>' + pimg1 + pimg2 + item.name + '</b> &nbsp; &nbsp;';
+	
+    if((item.atk != undefined) && (item.atk > -1)){
+        var totaliv = 100 * (item.atk + item.def + item.sta) / 45; 							// Calculate IV
+        content += 'CP: <b>' + item.cp + '</b> &nbsp; &nbsp;';								// Pokemon CP plus space
+		content += pdurl; 																	// Pokedex URL
+		content += '<b>Pok&eacute;monLvl:</b> ' + item.pokemon_level + ' &nbsp; &nbsp;';	// Pokemon Level
+		content += '<b>IV:</b> ' + totaliv.toFixed(0) + '% (' + item.atk + '/' + item.def + '/' + item.sta + ')<br />'; // Pokemon IVs
+		content += '<b>Moves:</b> ' + m1img + item.move1 + ' / ' + m2img + item.move2 + '<br />'; // Pokemon Moves
+        content += timeleft;																// Time Left
+		content += '<small>' + item.lat + ',' + item.lon + '</small><br />';				// Coords for Premium only
+    } else {
+		content += pdurl; 																	// Pokedex URL
+		content += timeleft;																// Time Left
+        content += '<b>CP, IVs, </b>and<b> Moves </b> at: <b>SPM+</b><br />';
+		content += patreonlink + '<b>&raquo;&raquo; Click HERE to Subscribe &laquo&laquo</b></a><br />';
+    }
+    content += '<a href="#" data-pokeid="'+item.pokemon_id+'" data-newlayer="Hidden" class="popup_filter_link">Hide</a>';
+    //content += '&nbsp; | &nbsp;';
+
+    /*
+    var userPref = getPreference('filter-'+item.pokemon_id);
+    if (userPref == 'trash'){
+        content += '<a href="#" data-pokeid="'+item.pokemon_id+'" data-newlayer="Pokemon" class="popup_filter_link">Move to Pokemon</a>';
+    }else{
+        content += '<a href="#" data-pokeid="'+item.pokemon_id+'" data-newlayer="Trash" class="popup_filter_link">Move to Trash</a>';
+    }
+    */
+    content += '&nbsp; &nbsp; | &nbsp; &nbsp;<a href="https://www.google.com/maps/?daddr='+ item.lat + ','+ item.lon +'" target="_blank" title="See in Google Maps">Get directions</a>';
+    
+	// remove comment "//" for production next line:
+	// return document.write(content);
+	
+	// add comment "//" for production next line:
+	return document.getElementById("data").innerHTML=content;
+}
+//
+// END OF NEW SCRIPT
+//
+</script>
+</td><td id="right"></td></tr>
+<tr><td id="bottom-left"></td><td id="bottom"></td><td id="bottom-right"></td></tr>
+</table>
+<img src="./img/b-arrow.png" id="arrow" />
+<img src="./1.png" id="icon" />
+</div>
+</div>
+<script> var iconimg=document.getElementById("icon");</script>
