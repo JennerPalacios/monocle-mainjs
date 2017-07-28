@@ -1,3 +1,4 @@
+<!-- ######################## COPY THESE STYLES ######################## -->
 <style>
 .type,.moves {
 	margin: 0.1em;
@@ -7,11 +8,16 @@
 	vertical-align: top;
 }
 .moves {
-	width: 1.1em;
-	vertical-align: bottom;
+	width: 1.2em;
+	vertical-align: top;
 }
 </style>
+<!-- #################################################################### -->
+
+
+<!-- ######################## COPY THESE SCRIPTS ######################## -->
 <script src="moves.json"></script><script src="pokemon.json"></script>
+<!-- #################################################################### -->
 
 
 
@@ -53,7 +59,7 @@ a:link,a:hover,a:visited,a:active{color: #0078a8}
 }
 table {
 	font-family: "Helvetica Neue",Helvetica;
-	font-size: 12px;
+	font-size: 0.75em;
 	border-spacing: 0;
 	border-collapse: collapse;
 	margin: auto;
@@ -106,8 +112,8 @@ function spawn(el){
 		poid=133; pom1=221; pom2=26; poatk=15; podef=15; posta=15; pocp=969; iconimg.src=poid+".png";
 		relaunch();
 	}
-	if(el=="jolteon"){
-		poid=135; pom1=205; pom2=79; poatk=15; podef=10; posta=15; pocp=2730; iconimg.src=poid+".png";
+	if(el=="dragonite"){
+		poid=149; pom1=253; pom2=277; poatk=15; podef=10; posta=15; pocp=3581; iconimg.src=poid+".png";
 		relaunch();
 	}
 	if(el=="regspm"){
@@ -140,7 +146,7 @@ item = {
 <button onClick="spawn('charmander')">Charmander</button>
 <button onClick="spawn('squirtle')">Squirtle</button>
 <button onClick="spawn('eevee')">Eevee</button>
-<button onClick="spawn('jolteon')">Jolteon</button>
+<button onClick="spawn('dragonite')">Dragonite</button>
 <br />
 <button onClick="spawn('regspm')"><b>REGULAR SPM</b></button>
 <div id="output">
@@ -185,7 +191,7 @@ function getPopupContent(item) {
     var seconds = parseInt(diff - (minutes * 60));
     var expires_at = minutes + 'm ' + seconds + 's';
 	
-	var pdurl = '(<a href="https://pokemongo.gamepress.gg/pokemon/' + item.pokemon_id + '">#' + item.pokemon_id + '</a>) <br />';
+	var pdurl = '(<a href="https://pokemongo.gamepress.gg/pokemon/' + item.pokemon_id + '" title="Check Pokemon Info">#' + item.pokemon_id + '</a>) <br />';
 	var patreonlink = '<a target="_blank"  href="https://www.patreon.com/SPMplus">';
 	var m1img = '<img src="./img/bg/' + pokeMoves[item.move_1].type + '.png" class="moves" />';
 	var m2img = '<img src="./img/bg/' + pokeMoves[item.move_2].type + '.png" class="moves" />';
@@ -212,7 +218,7 @@ function getPopupContent(item) {
         content += '<b>CP, IVs, </b>and<b> Moves </b> at: <b>SPM+</b><br />';
 		content += patreonlink + '<b>&raquo;&raquo; Click HERE to Subscribe &laquo&laquo</b></a><br />';
     }
-    content += '<a href="#" data-pokeid="'+item.pokemon_id+'" data-newlayer="Hidden" class="popup_filter_link">Hide</a>';
+    content += '<a href="#" data-pokeid="'+item.pokemon_id+'" data-newlayer="Hidden" class="popup_filter_link" title="Hide this Pokemon">Hide</a>';
     //content += '&nbsp; | &nbsp;';
 
     /*
